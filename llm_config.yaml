@@ -1,0 +1,63 @@
+defaults:
+  model: meta-llama/llama-3-70b-instruct
+  temperature: 0.3
+  top_p: 1.0
+  max_tokens: 1024
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: OPENROUTER_API_KEY
+
+nodes:
+  intent:
+    models:
+      - model: ai-sage/GigaChat3-10B-A1.8B
+        temperature: 0.0
+        max_tokens: 256
+        base_url: https://foundation-models.api.cloud.ru/v1
+        api_key_env: CLOUDRU_API_KEY
+      - model: meta-llama/llama-3-70b-instruct
+        temperature: 0.0
+        max_tokens: 256
+
+  search:
+    models:
+      - model: ai-sage/GigaChat3-10B-A1.8B
+        temperature: 0.2
+        max_tokens: 512
+        base_url: https://foundation-models.api.cloud.ru/v1
+        api_key_env: CLOUDRU_API_KEY
+      - model: meta-llama/llama-3-70b-instruct
+        temperature: 0.2
+        max_tokens: 512
+
+  summarize:
+    models:
+      - model: ai-sage/GigaChat3-10B-A1.8B
+        temperature: 0.3
+        max_tokens: 1024
+        base_url: https://foundation-models.api.cloud.ru/v1
+        api_key_env: CLOUDRU_API_KEY
+      - model: meta-llama/llama-3-70b-instruct
+        temperature: 0.3
+        max_tokens: 1024
+
+  sentiment:
+    models:
+      - model: ai-sage/GigaChat3-10B-A1.8B
+        temperature: 0.1
+        max_tokens: 256
+        base_url: https://foundation-models.api.cloud.ru/v1
+        api_key_env: CLOUDRU_API_KEY
+      - model: meta-llama/llama-3-70b-instruct
+        temperature: 0.1
+        max_tokens: 256
+
+  fallback:
+    models:
+      - model: ai-sage/GigaChat3-10B-A1.8B
+        temperature: 0.5
+        max_tokens: 1200
+        base_url: https://foundation-models.api.cloud.ru/v1
+        api_key_env: CLOUDRU_API_KEY
+      - model: meta-llama/llama-3-70b-instruct
+        temperature: 0.6
+        max_tokens: 1200
